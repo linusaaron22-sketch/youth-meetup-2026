@@ -79,7 +79,7 @@ export default function Home() {
 
             <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-sans text-sm sm:gap-x-5 sm:text-lg">
               <span className="font-medium uppercase tracking-wide text-[#d4af37]">
-                {isHindi ? "14 वर्ष तक" : "UP TO 14 YEARS"}
+  {isHindi ? "न्यूनतम आयु: 14 वर्ष" : "MINIMUM AGE: 14 YEARS"}
               </span>
               <span aria-hidden="true" className="text-[#78947c]">✦</span>
               <span className="font-medium uppercase text-[#f3e5ab]">
