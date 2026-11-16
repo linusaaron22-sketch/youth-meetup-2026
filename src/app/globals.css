@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-ivory-50 text-forest-900 antialiased font-sans; }
+  h1, h2, h3 { @apply font-display; }
+}
+
+@layer components {
+  .card { @apply rounded-2xl border border-gold-200 bg-white/85 p-5 shadow-sm sm:p-6; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply bg-forest-800 text-ivory-50 hover:bg-forest-700 active:scale-[.98]; }
+  .btn-gold { @apply bg-gold-500 text-white hover:bg-gold-600 active:scale-[.98]; }
+  .btn-ghost { @apply border border-forest-200 bg-white text-forest-800 hover:bg-forest-50; }
+  .btn-danger { @apply border border-red-300 bg-white text-red-700 hover:bg-red-50; }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+  .input { @apply w-full rounded-xl border border-forest-200 bg-white px-4 py-3 text-base text-forest-900 placeholder:text-forest-300 focus:border-forest-600 focus:outline-none focus:ring-2 focus:ring-forest-600/20; }
+  .label { @apply mb-1.5 block text-sm font-medium text-forest-800; }
+  .err { @apply mt-1 text-sm text-red-700; }
+  .badge { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium; }
+  .th { @apply whitespace-nowrap px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-forest-600; }
+  .td { @apply px-3 py-2.5 text-sm; }
+}
+
+/* Hindi (public pages only; the admin area carries .admin-root and stays English) */
+html.lang-hi:not(:has(.admin-root)) { font-size: 106.25%; }
+html.lang-hi:not(:has(.admin-root)) body,
+html.lang-hi:not(:has(.admin-root)) h1,
+html.lang-hi:not(:has(.admin-root)) h2,
+html.lang-hi:not(:has(.admin-root)) h3,
+html.lang-hi:not(:has(.admin-root)) .font-display {
+  font-family: var(--font-hindi), var(--font-sans), system-ui, sans-serif;
+}
+html.lang-hi:not(:has(.admin-root)) body { line-height: 1.65; }
+html.lang-hi:not(:has(.admin-root)) h1,
+html.lang-hi:not(:has(.admin-root)) h2 { line-height: 1.35 !important; }
+html.lang-hi:not(:has(.admin-root)) * {
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  font-style: normal !important;
+}
+
+/* Existing wildlife illustration animations */
+@keyframes animal-sway {
+  0%, 100% { transform: rotate(-2deg) translateY(0); }
+  50% { transform: rotate(2deg) translateY(-5px); }
+}
+@keyframes animal-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes bird-fly {
+  0%, 100% { transform: translate(0, 0) rotate(-3deg); }
+  50% { transform: translate(12px, -9px) rotate(4deg); }
+}
+@keyframes leaf-float {
+  0%, 100% { transform: translateY(0) rotate(-8deg); }
+  50% { transform: translateY(-13px) rotate(8deg); }
+}
+@keyframes soft-glow {
+  0%, 100% { box-shadow: 0 0 18px rgba(201, 165, 92, .12); }
+  50% { box-shadow: 0 0 32px rgba(201, 165, 92, .28); }
+}
+.animal-sway { transform-origin: bottom center; animation: animal-sway 4s ease-in-out infinite; }
+.animal-bob { animation: animal-bob 3.5s ease-in-out infinite; }
+.bird-fly { animation: bird-fly 5s ease-in-out infinite; }
+.leaf-float { animation: leaf-float 6s ease-in-out infinite; }
+.hero-glow { animation: soft-glow 4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .animal-sway, .animal-bob, .bird-fly, .leaf-float, .hero-glow { animation: none !important; }
+}
+
+/* Stitch animated wildlife scene — scoped so admin and registration pages are unaffected */
+@keyframes stitchTrunkSwing { 0%,100%{transform:rotate(0)} 50%{transform:rotate(20deg) translateY(-3px)} }
+@keyframes stitchEarFlap { 0%,100%{transform:scaleX(1)} 50%{transform:scaleX(.68) skewY(-3deg)} }
+@keyframes stitchBlinkEye { 0%,94%,98%,100%{transform:scaleY(1);opacity:1} 96%{transform:scaleY(.1);opacity:.2} }
+@keyframes stitchGiraffeNeck { 0%,100%{transform:rotate(0)} 35%{transform:rotate(-5deg) translateY(-3px)} 70%{transform:rotate(3deg) translateY(1px)} }
+@keyframes stitchEarTwitch { 0%,85%,100%{transform:rotate(0)} 90%{transform:rotate(18deg)} 95%{transform:rotate(-10deg)} }
+@keyframes stitchZebraTail { 0%,100%{transform:rotate(0)} 40%{transform:rotate(26deg)} 60%{transform:rotate(-14deg)} }
+@keyframes stitchZebraStep { 0%,100%{transform:rotate(0)} 50%{transform:rotate(-8deg)} }
+@keyframes stitchMonkeySwing { 0%,100%{transform:rotate(16deg)} 50%{transform:rotate(-16deg)} }
+@keyframes stitchDeerHead { 0%,100%{transform:rotate(0)} 35%{transform:rotate(11deg) translateY(2px)} 75%{transform:rotate(-5deg)} }
+@keyframes stitchIdleBreath { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+@keyframes stitchFriendlyWave { 0%,100%{transform:rotate(0)} 35%{transform:rotate(-28deg)} 65%{transform:rotate(-10deg)} 85%{transform:rotate(-24deg)} }
+@keyframes stitchHeadNod { 0%,100%{transform:rotate(0)} 50%{transform:rotate(4deg) translateY(1px)} }
+@keyframes stitchWingFlap { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(-.85)} }
+@keyframes stitchFlightPath1 { 0%{transform:translate(-100px,20px);opacity:0} 10%,90%{opacity:.85} 100%{transform:translate(1450px,-45px);opacity:0} }
+@keyframes stitchFlightPath2 { 0%{transform:translate(-120px,60px);opacity:0} 15%,85%{opacity:.7} 100%{transform:translate(1400px,10px);opacity:0} }
+@keyframes stitchLeafSwayLeft { 0%,100%{transform:rotate(0)} 50%{transform:rotate(4deg)} }
+@keyframes stitchLeafSwayRight { 0%,100%{transform:rotate(0)} 50%{transform:rotate(-4deg)} }
+@keyframes stitchFireflyGlow { 0%,100%{opacity:.25;transform:translateY(0) scale(.9)} 50%{opacity:.95;transform:translateY(-12px) scale(1.15)} }
+
+.stitch-home { background:#0c1a14; isolation:isolate; }
+.stitch-home .anim-trunk { transform-origin:32px 60px; animation:stitchTrunkSwing 4.2s ease-in-out infinite; }
+.stitch-home .anim-ear { transform-origin:52px 50px; animation:stitchEarFlap 3.6s ease-in-out infinite; }
+.stitch-home .anim-blink { transform-box:fill-box; transform-origin:center; animation:stitchBlinkEye 4s infinite; }
+.stitch-home .anim-giraffe-neck { transform-origin:42px 110px; animation:stitchGiraffeNeck 7s ease-in-out infinite; }
+.stitch-home .anim-ear-twitch { transform-origin:29px 15px; animation:stitchEarTwitch 3.8s infinite; }
+.stitch-home .anim-zebra-tail { transform-origin:96px 46px; animation:stitchZebraTail 2.8s ease-in-out infinite; }
+.stitch-home .anim-zebra-step { transform-origin:38px 52px; animation:stitchZebraStep 3s ease-in-out infinite; }
+.stitch-home .anim-monkey-swing { transform-origin:50% 0%; animation:stitchMonkeySwing 3.5s ease-in-out infinite; }
+.stitch-home .anim-deer-head { transform-origin:30px 46px; animation:stitchDeerHead 5.2s ease-in-out infinite; }
+.stitch-home .anim-breath { animation:stitchIdleBreath 4.5s ease-in-out infinite; }
+.stitch-home .anim-wave { transform-origin:26px 40px; animation:stitchFriendlyWave 2.8s ease-in-out infinite; }
+.stitch-home .anim-nod { transform-origin:center bottom; animation:stitchHeadNod 4s ease-in-out infinite; }
+.stitch-home .anim-wing { transform-origin:50% 50%; animation:stitchWingFlap .45s ease-in-out infinite; }
+.stitch-home .bird-flock-1 { animation:stitchFlightPath1 20s linear infinite; }
+.stitch-home .bird-flock-2 { animation:stitchFlightPath2 26s 6s linear infinite; }
+.stitch-home .anim-sway-l { transform-origin:bottom left; animation:stitchLeafSwayLeft 5.5s ease-in-out infinite; }
+.stitch-home .anim-sway-r { transform-origin:bottom right; animation:stitchLeafSwayRight 6.2s ease-in-out infinite; }
+.stitch-home .firefly-1 { animation:stitchFireflyGlow 3.2s infinite ease-in-out; }
+.stitch-home .firefly-2 { animation:stitchFireflyGlow 4.5s 1.2s infinite ease-in-out; }
+.stitch-home .firefly-3 { animation:stitchFireflyGlow 3.8s 2s infinite ease-in-out; }
+.stitch-home .stitch-language-switcher { font-size:11px; }
+.stitch-home .font-display { font-family: var(--font-display, Georgia), Georgia, serif; }
+@media (max-width:639px) {
+  .stitch-home .anim-monkey-swing { left:.5rem; }
+  .stitch-home .anim-breath { transform-origin:center bottom; }
+  .stitch-home .stitch-language-switcher button { min-height:30px; padding-inline:.65rem; font-size:10px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .stitch-home .anim-trunk,.stitch-home .anim-ear,.stitch-home .anim-blink,.stitch-home .anim-giraffe-neck,
+  .stitch-home .anim-ear-twitch,.stitch-home .anim-zebra-tail,.stitch-home .anim-zebra-step,.stitch-home .anim-monkey-swing,
+  .stitch-home .anim-deer-head,.stitch-home .anim-breath,.stitch-home .anim-wave,.stitch-home .anim-nod,
+  .stitch-home .anim-wing,.stitch-home .bird-flock-1,.stitch-home .bird-flock-2,.stitch-home .anim-sway-l,
+  .stitch-home .anim-sway-r,.stitch-home .firefly-1,.stitch-home .firefly-2,.stitch-home .firefly-3 { animation:none !important; }
+}
